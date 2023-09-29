@@ -18,7 +18,35 @@
             }
             return getComputerChoice;
         }
-        console.log(getComputerChoice());
+        function playRound(playerSelection, computerSelection) {
+            if(playerSelection==='rock' && computerSelection==='rock'){
+                return('you tie. rock and rock');
+            }else if(playerSelection==='paper' && computerSelection==='paper'){
+                return('you tie. paper and paper');
+            }else if(playerSelection==='scissors' && computerSelection==='scissors'){
+                return('you tie. scissors and scissors');
+            }else if(playerSelection==='rock' && computerSelection==='paper'){
+                return('you lose. rock and paper');
+            }else if(playerSelection==='paper' && computerSelection==='rock'){
+                return('you win. paper and rock');
+            }else if(playerSelection==='rock' && computerSelection==='scissors'){
+                return('you win. rock and scissors');
+            }else if(playerSelection==='scissors' && computerSelection==='rock'){
+                return('you lose. scissors and rock');
+            }else if(playerSelection==='paper' && computerSelection==='scissors'){
+                return('you lose. paper and scissors');
+            }else if(playerSelection==='scissors' && computerSelection==='paper'){
+                return('you win. scissors and paper');
+            }
+        }
+        function game(){
+
+        }
+
+        let player = prompt('what do you choose?');
+        let playerSelection = player.toLowerCase();
+        let computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));        
     </script>
 </body>
 </html>
