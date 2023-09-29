@@ -7,46 +7,68 @@
 </head>
 <body>
     <script>
-        function getComputerChoice(){
-            let x = Math.floor((Math.random() * 3) + 1);
-            if(x===1){
-                getComputerChoice = 'rock'
-            }else if(x===2){
-                getComputerChoice='paper'
-            }else{
-                getComputerChoice='scissors'
-            }
-            return getComputerChoice;
-        }
-        function playRound(playerSelection, computerSelection) {
-            if(playerSelection==='rock' && computerSelection==='rock'){
-                return('you tie. rock and rock');
-            }else if(playerSelection==='paper' && computerSelection==='paper'){
-                return('you tie. paper and paper');
-            }else if(playerSelection==='scissors' && computerSelection==='scissors'){
-                return('you tie. scissors and scissors');
-            }else if(playerSelection==='rock' && computerSelection==='paper'){
-                return('you lose. rock and paper');
-            }else if(playerSelection==='paper' && computerSelection==='rock'){
-                return('you win. paper and rock');
-            }else if(playerSelection==='rock' && computerSelection==='scissors'){
-                return('you win. rock and scissors');
-            }else if(playerSelection==='scissors' && computerSelection==='rock'){
-                return('you lose. scissors and rock');
-            }else if(playerSelection==='paper' && computerSelection==='scissors'){
-                return('you lose. paper and scissors');
-            }else if(playerSelection==='scissors' && computerSelection==='paper'){
-                return('you win. scissors and paper');
-            }
-        }
+        
         function game(){
 
+            let playerScore = 0;
+            let computerScore = 0;
+
+            for(let i = 0; i < 5; i++){
+
+                let player = prompt('what do you choose?');
+                let playerSelection = player.toLowerCase();
+
+                function getComputerChoice(){
+                    let x = Math.floor((Math.random() * 3) + 1);
+                    if(x===1){
+                        getComputerChoice = 'rock'
+                    }else if(x===2){
+                        getComputerChoice='paper'
+                    }else{
+                        getComputerChoice='scissors'
+                    }
+                    return getComputerChoice;
+                }
+                let computerSelection = getComputerChoice();
+
+                function playRound(playerSelection, computerSelection) {
+                    if(playerSelection==='rock' && computerSelection==='rock'){
+                        alert('you tie. rock and rock');
+                    }else if(playerSelection==='paper' && computerSelection==='paper'){
+                        alert('you tie. paper and paper');
+                    }else if(playerSelection==='scissors' && computerSelection==='scissors'){
+                        alert('you tie. scissors and scissors');
+                    }else if(playerSelection==='rock' && computerSelection==='paper'){
+                        computerScore++;
+                        alert('you lose. rock and paper');                       
+                    }else if(playerSelection==='paper' && computerSelection==='rock'){
+                        playerScore++;
+                        alert('you win. paper and rock');                       
+                    }else if(playerSelection==='rock' && computerSelection==='scissors'){
+                        playerScore++;
+                        alert('you win. rock and scissors');                       
+                    }else if(playerSelection==='scissors' && computerSelection==='rock'){
+                        computerScore++;
+                        alert('you lose. scissors and rock');                       
+                    }else if(playerSelection==='paper' && computerSelection==='scissors'){
+                        computerScore++;
+                        alert('you lose. paper and scissors');                      
+                    }else if(playerSelection==='scissors' && computerSelection==='paper'){
+                        playerScore++;
+                        alert('you win. scissors and paper');
+                    }
+                }
+            }
+
+            if(playerScore === 5){
+                alert ('you win');
+            }else if(computerScore === 5){
+                alert ('you lost');
+            }
         }
 
-        let player = prompt('what do you choose?');
-        let playerSelection = player.toLowerCase();
-        let computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));        
+        console.log(game());   
+  
     </script>
 </body>
 </html>
