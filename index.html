@@ -4,71 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script>
-        function game(){
-            let playerScore = 0;
-            let computerScore = 0;
-
-            for(let i = 0; i < 5; i++){
-                let player = prompt('what do you choose?');
-                let playerSelection = player.toLowerCase();
-
-                function getComputerChoice(){
-                    let x = Math.floor((Math.random() * 3) + 1);
-                    let computerChoice;
-                    if(x===1){
-                        computerChoice = 'rock';
-                    }else if(x===2){
-                        computerChoice='paper';
-                    }else{
-                        computerChoice='scissors';
-                    }
-                    return computerChoice;
-                }   
-                let computerSelection = getComputerChoice;
-
-                function playRound(playerSelection, computerSelection) {
-                    if(playerSelection==='rock' && computerSelection==='rock'){
-                        console.log('you tie. rock and rock');
-                    }else if(playerSelection==='paper' && computerSelection==='paper'){
-                        console.log('you tie. paper and paper');
-                    }else if(playerSelection==='scissors' && computerSelection==='scissors'){
-                        console.log('you tie. scissors and scissors');
-                    }else if(playerSelection==='rock' && computerSelection==='paper'){
-                        computerScore++;
-                        console.log('you lose. rock and paper');                       
-                    }else if(playerSelection==='paper' && computerSelection==='rock'){
-                        playerScore++;
-                        console.log('you win. paper and rock');                       
-                    }else if(playerSelection==='rock' && computerSelection==='scissors'){
-                        playerScore++;
-                        console.log('you win. rock and scissors');                       
-                    }else if(playerSelection==='scissors' && computerSelection==='rock'){
-                        computerScore++;
-                        console.log('you lose. scissors and rock');                       
-                    }else if(playerSelection==='paper' && computerSelection==='scissors'){
-                        computerScore++;
-                        console.log('you lose. paper and scissors');                      
-                    }else if(playerSelection==='scissors' && computerSelection==='paper'){
-                        playerScore++;
-                        console.log('you win. scissors and paper');
-                    }
-                }
-                playRound(playerSelection, computerSelection);
-            }
-
-            if(playerScore > computerScore){
-                console.log('you win');
-            }else if(computerScore > playerScore){
-                console.log('you lost');
-            }
-
-        }
-
-        game();   
-
-    </script>
+    <h1>Rock Paper Scissors</h1>
+    <h2>You VS The Machine</h2>
+    <h3>choose your fighter</h3>
+    <div id="gameState"></div>
+    <p></p>
+    <h3></h3>
 </body>
 </html>
