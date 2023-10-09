@@ -79,10 +79,27 @@ function game(playerChoice){
     }
     playRound(playerSelection, computerSelection);
 
-    if(playerScore  === 5){
-        console.log('you won');
-    }else if(computerScore === 5){
-        console.log('you won');
+    if(playerScore === 5){
+        const youWon = document.createElement("p");
+        youWon.textContent = 'YOU WON'
+        gameState.appendChild(youWon);
+    }
+    if(computerScore === 5){
+        const youLost = document.createElement("p");
+        youLost.textContent = 'YOU LOST'
+        gameState.appendChild(youLost);
+    }
+
+    if(playerScore  === 5 || computerScore === 5) {
+        gameState.removeChild(rockbtn);
+        gameState.removeChild(paperbtn);
+        gameState.removeChild(scissorsbtn);
+        gameresult.remove();
+
+        const playAgain = document.createElement("p");
+        playAgain.textContent = 'PLAY AGAIN';
+        playAgain.setAttribute('id', 'playAgain'); 
+        gameState.appendChild(playAgain);
     }
 
 }
