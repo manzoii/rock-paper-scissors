@@ -5,3 +5,23 @@ body{
     align-items: center;
     justify-content: center;
 }
+button{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+}
+#score{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#gameState{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wonorlost{
+    font-size: 50px;
+}

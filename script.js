@@ -1,24 +1,37 @@
-const gameState = document.querySelector('div');
+let playerScore = 0;
+let computerScore = 0;
+
+const gameState = document.querySelector('#gameState');
+const choose = document.createElement('h3');
+choose.textContent = 'CHOOSE YOUR FIGHTER'
+gameState.appendChild(choose);
+
+const buttons = document.createElement('div')
+gameState.appendChild(buttons);
 
 const rockbtn = document.createElement('button');
 rockbtn.textContent = 'ROCK';
 rockbtn.setAttribute('id', 'rockbtn'); 
-gameState.appendChild(rockbtn);
+buttons.appendChild(rockbtn);
 
 const paperbtn = document.createElement("button");
 paperbtn.textContent = 'PAPER';
 paperbtn.setAttribute('id', 'paperbtn'); 
-gameState.appendChild(paperbtn);
+buttons.appendChild(paperbtn);
 
 const scissorsbtn = document.createElement("button");
-scissorsbtn.textContent = 'BUTTON';
+scissorsbtn.textContent = 'SCISSORS';
 scissorsbtn.setAttribute('id', 'scissorsbtn'); 
-gameState.appendChild(scissorsbtn);
+buttons.appendChild(scissorsbtn);
 
 const gameresult = document.querySelector('p');
 
-let playerScore = 0;
-let computerScore = 0;
+const youScore = document.createElement('p')
+score.appendChild(youScore);
+
+const machineScore = document.createElement('p')
+score.appendChild(machineScore);
+
 
 document.getElementById("rockbtn").addEventListener("click",rockPlay);
 document.getElementById("paperbtn").addEventListener("click",paperPlay);
@@ -26,12 +39,18 @@ document.getElementById("scissorsbtn").addEventListener("click",scissorsPlay);
 
 function rockPlay(){
     game('rock');
+    youScore.textContent = 'YOU : ' + playerScore;
+    machineScore.textContent = 'The MACHINE : ' + computerScore;
 }
 function paperPlay(){
     game('paper');
+    machineScore.textContent = 'The MACHINE : ' + computerScore;
+    youScore.textContent = 'YOU : ' + playerScore;
 }
 function scissorsPlay(){
     game('scissors');
+    machineScore.textContent = 'The MACHINE : ' + computerScore;
+    youScore.textContent = 'YOU : ' + playerScore;
 }
 
 function game(playerChoice){
@@ -82,24 +101,21 @@ function game(playerChoice){
     if(playerScore === 5){
         const youWon = document.createElement("p");
         youWon.textContent = 'YOU WON'
+        youWon.setAttribute('class', 'wonorlost')
         gameState.appendChild(youWon);
     }
     if(computerScore === 5){
         const youLost = document.createElement("p");
         youLost.textContent = 'YOU LOST'
+        youLost.setAttribute('class', 'wonorlost')
         gameState.appendChild(youLost);
     }
 
     if(playerScore  === 5 || computerScore === 5) {
-        gameState.removeChild(rockbtn);
-        gameState.removeChild(paperbtn);
-        gameState.removeChild(scissorsbtn);
+        gameState.removeChild(buttons);
         gameresult.remove();
-
-        const playAgain = document.createElement("p");
-        playAgain.textContent = 'PLAY AGAIN';
-        playAgain.setAttribute('id', 'playAgain'); 
-        gameState.appendChild(playAgain);
+        gameState.removeChild(choose);
+        score.remove();
     }
-
+    
 }
